@@ -5,7 +5,7 @@ module.exports = {
     index,
     create,
     newFlight,
-     show
+    show
 }
 
 function show(req, res) {

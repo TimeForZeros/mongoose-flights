@@ -11,10 +11,10 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  Flight.findById(req.params.id, function(err, movie) {
-    flight.reviews.push(req.body);
+  Flight.findById(req.params.id, function(err, flight) {
+    //flight.reviews.push(req.body.reviewInput);
     flight.save(function(err) {
-      res.redirect(`/flights/${flight._id}`);
+      res.redirect(`/flights/${flight._id}/reviews`);
     });
   });
 }

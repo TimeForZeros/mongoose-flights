@@ -6,12 +6,13 @@ module.exports = {
     create,
     newFlight,
     show
-}
+};
 
 function show(req, res) {
-          res.render("flights/show", {
-           // airline, flightNo, departs
-  })}
+    Flight.findById(req.params.id, function(err, flight) {
+      res.render('flights/show', { title: 'Flight Detail', flight });
+    });
+  }
 
 function index(req, res) {
     Flight.find({}, function(err, flights) {
@@ -21,13 +22,13 @@ function index(req, res) {
 
  function newFlight(req, res) {
      res.render('flights/new');
- };
+ }
 
 function create(req, res) {
     var flight = new Flight(req.body);
     flight.save(function(err) {
        if (err) {
-           console.log(req.body.departs);
+           console.log(req.body);
         return res.render('flights/new');
     }
 

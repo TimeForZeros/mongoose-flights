@@ -5,50 +5,15 @@
   <div>Airport: <%=flight.airport %></div>
   <div>Flight Number: <%= flight.flightNo %> </div>
   <div>Departure Time: <%= flight.departs %> </div>
-
-  
-  
-  
-  
-  
-
-</section>
-
-
-<br><br>
-<h2>Reviews</h2>
-<form id="add-review-form" method="POST" action="/flights/<%= flight._id %>/reviews" name="reviewInput">
-  <label>Airline:</label>
-  <textarea name="airline"></textarea>
-  <label>Rating:</label>
-  <select name="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
+  <div>Destination: <%= flight.destination %> </div>
+ 
+ <form action='./' method="PUT">
+  <select name="destination">
+      <option value='AUS'>AUS</option>
+      <option value='DAL'>DAL</option>
+      <option value='LAX'>LAX</option>
+      <option value='SEA'>SEA</option>
   </select>
-  <input type="submit" value="Add Review">
 </form>
-
-<% if (flight.reviews) { %>
-  <table>
-    <thead>
-      <tr>
-        <th><%= flight.reviews %></th>
-        <th>Date</th>
-        <th>Review</th>
-        <th>Rating</th>
-      </tr>
-    </thead>
-    <tbody>
-        <td colspan="2"></td>
-        <td><strong><%= (total / flight.reviews.length).toFixed(1) %></strong></td>
-      </tr>
-    </tbody>
-  </table>
-<% } else { %>
-  <h5>No Reviews Yet</h5>
-<% } %>
 
 

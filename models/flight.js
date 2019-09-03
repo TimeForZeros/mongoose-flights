@@ -20,8 +20,7 @@ var flightSchema = new Schema({
   airport: { type: String, enum: ["AUS", "DAL", "LAX", "SEA"], default: "SEA" },
   flightNo: { type: Number, min: 10, max: 9999 },
   departs: { type: Date },
-  destination: [destinationSchema],
-  reviews: [reviewSchema]
+  destination: [destinationSchema]
 });
 
 module.exports = mongoose.model("Flight", flightSchema);

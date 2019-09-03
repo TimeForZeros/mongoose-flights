@@ -9,7 +9,14 @@ module.exports = {
 };
 
 function update(req, res) {
-  Flight.destination.push(req.body.destination);
+  Flight.findById(req.params.id, function(err, flight) {
+    flight.destination.airport = req.body.airport;
+    flight.destination.arrival = req.body.arrival;
+    flight.save(function(err) {
+        res.redirect(`/flights/${flight._id}`);
+    });
+    console.log("destination is " + flight.destination.airport + " " + flight.destination.arrival);
+  });
 }
 
 function show(req, res) {

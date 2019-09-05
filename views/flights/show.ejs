@@ -3,8 +3,13 @@
   <div>Airport: <%=flight.airport %></div>
   <div>Flight Number: <%= flight.flightNo %> </div>
   <div>Departure Time: <%= flight.departs %> </div>
-  <div>Destination Airport: <%= flight.destination.airport %> </div>
-  <div>Arrival Time: <%= flight.destination.arrival %></div>
+  <% if (flight.destination.length) { %>
+  <div>Destination Airport: <%= flight.destination[0].airport %> </div>
+  <div>Arrival Time: <%= flight.destination[0].arrival %></div>
+  <% } %>
+
+
+
   <h3>Update Destination Information</h3>
   <form action='/flights/<%= flight._id%>' method="POST">
     <div>Destination Airport:
@@ -15,10 +20,23 @@
         <option value='SEA'>SEA</option>
       </select></div>
     <div>Arrival Time:</div>
-    <input type='datetime' name='arrival'>
+    <input type='date' name='arrival'>
     <input type='submit'>
     </form>
-  <input name="seat" required pattern="[A-F][1-9]\d?">
+    <h2>Ticket Information</h2>
+    <ul>
+    <% tickets.forEach(function(t){ %>
+<li>Ticket Seat: <%= t.seat %></li>
+    <% }) %>
+  </ul>
 
+
+    <h3>Add Ticket</h3>
+    <form action='/flights/<%=tickets._id %>' method="POST">
+      <input name="seat" required pattern="[A-F][1-9]\d?">
+      <input type='submit'>
+    </form>
+    <section>
+  </section>
 
 <h4><a href='/flights'>Return to Flights</a></h4>
